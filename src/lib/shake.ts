@@ -25,7 +25,7 @@ export function useIsShakePermitted() {
     });
   }, [permission]);
   const requestPermission = useCallback(async () => {
-    if (permission) return;
+    if (permission === ShakePermission.GRANTED) return;
     setPermission(ShakePermission.REQUESTING);
     const status = await DeviceMotionEvent.requestPermission();
     await db.permissions.put({id: 'shake', status});

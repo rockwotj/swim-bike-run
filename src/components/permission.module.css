@@ -1,0 +1,21 @@
+.container {
+  padding: 8px;
+  gap: 8px;
+  align-items: center;
+}
+
+.heading {
+  font-size: 1.5rem;
+}
+
+.description {
+  text-align: center;
+}
+
+.button {
+  margin: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--oc-orange-6);
+  color: var(--oc-gray-0);
+}
