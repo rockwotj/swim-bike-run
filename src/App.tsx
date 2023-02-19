@@ -8,11 +8,11 @@ function App() {
   const {permission, requestPermission} = useIsShakePermitted();
   switch (permission) {
     case ShakePermission.GRANTED:
+    case ShakePermission.UNKNOWN:
       return <Home />
     case ShakePermission.REQUESTING:
       return <Loading />
     case ShakePermission.DENIED:
-    case ShakePermission.UNKNOWN:
       return <Permission description='In order to detect you shaking your device you must grant permissions' requestPermission={requestPermission} />
     default:
       assertNever(permission);

@@ -21,7 +21,6 @@ export function useIsShakePermitted() {
   useEffect(() => {
     if (permission !== ShakePermission.UNKNOWN) return;
     db.permissions.get('shake').then((stored) => {
-      console.log(stored);
       setPermission(stored?.status === "granted" ? ShakePermission.GRANTED : ShakePermission.DENIED);
     });
   }, [permission]);
