@@ -1,0 +1,41 @@
+/* Modified from https://github.com/dwhieb/flexbox-reset */
+*:where(:not(iframe, canvas, details, img, summary, svg, svg *, symbol *, video)) {
+  all: unset;
+  display: revert;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:where([hidden]) {
+  display: none;
+}
+:where(address, article, aside, body, dialog, div, dl, fieldset, figure, footer, form, header, hgroup, html, iframe, label, legend, li, main, menu, nav, ol, section, ul) {
+  display: flex;
+  flex-direction: column;
+}
+a,
+button {
+  cursor: revert;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote::before,
+q::before,
+blockquote::after,
+q::after {
+  content: '';
+  content: none;
+}
+:focus-visible {
+  outline: revert;
+}
+:where(ol, ul, menu) {
+  list-style: none;
+}
+::placeholder {
+  color: unset;
+}
