@@ -10,3 +10,7 @@
   background: var(--oc-gray-0);
   color: var(--oc-gray-9);
 }
+
+html, body, #root {
+  height: 100%;
+}
