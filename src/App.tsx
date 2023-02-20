@@ -1,22 +1,23 @@
-import {Home} from './components/Home';
-import {Loading} from './components/Loading';
-import {Permission} from './components/Permission';
-import {ShakePermission, useIsShakePermitted} from './lib/shake'
-import {assertNever} from './lib/util';
+import {Redirect, Route, Switch} from "wouter";
+import {Home} from "./components/screens/Home";
+import {SportWorkout} from "./components/screens/Sport";
+import {Sport} from "./lib/sport";
 
-function App() {
-  const {permission, requestPermission} = useIsShakePermitted();
-  switch (permission) {
-    case ShakePermission.GRANTED:
-    case ShakePermission.UNKNOWN:
-      return <Home />
-    case ShakePermission.REQUESTING:
-      return <Loading />
-    case ShakePermission.DENIED:
-      return <Permission description='In order to detect you shaking your device you must grant permissions' requestPermission={requestPermission} />
-    default:
-      assertNever(permission);
-  };
+export function App(): JSX.Element {
+  return (
+    <Switch>
+      <Route path="/sport/:type">
+        {
+          ({type}) => {
+            const sport = Sport.forType(type);
+            return sport ? <SportWorkout sport={sport} /> : <Redirect to="/"/>
+          }
+        }
+      </Route>
+      <Route path="/" >
+        <Home />
+      </Route>
+      <Route><Redirect to="/"/></Route>
+    </Switch>
+  );
 }
-
-export default App
