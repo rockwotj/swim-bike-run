@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  grid-template-rows: 64px 1fr 64px;
+  grid-template-areas:
+    'x . .'
+    '. content .'
+    '. . .';
+  align-items: center;
+  justify-items: center;
+}
+
+.container > * {
+  grid-area: content
+}
+
+.container > img {
+  grid-area: x;
+}

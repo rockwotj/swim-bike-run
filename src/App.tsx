@@ -1,5 +1,6 @@
 import {Redirect, Route, Switch} from "wouter";
 import {Home} from "./components/screens/Home";
+import {Settings} from "./components/screens/Settings";
 import {SportWorkout} from "./components/screens/Sport";
 import {Sport} from "./lib/sport";
 
@@ -13,6 +14,9 @@ export function App(): JSX.Element {
             return sport ? <SportWorkout sport={sport} /> : <Redirect to="/"/>
           }
         }
+      </Route>
+      <Route path="/settings" >
+        <Settings />
       </Route>
       <Route path="/" >
         <Home />

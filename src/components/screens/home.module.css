@@ -1,4 +1,23 @@
 .container {
+  display: grid;
+  justify-items: center;
   align-items: center;
+  grid-template-columns: 64px 1fr 64px;
+  grid-template-rows: 64px 1fr 64px;
+  grid-auto-rows: auto;
+  grid-template-areas:
+    '. . settings'
+    '. content .'
+    '. . .'
+}
+
+.container > img {
+  grid-area: settings;
+}
+
+.content {
+  grid-area: content;
   gap: 8px;
+  align-self: stretch;
+  align-items: center
 }
