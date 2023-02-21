@@ -7,8 +7,12 @@ interface ButtonProps {
   readonly style?: CSSProperties;
   readonly children: ReactNode;
   readonly onClick: MouseEventHandler;
+  readonly color?: 'orange' | 'green';
 }
 
-export function Button({className, children, ...rest}: ButtonProps) {
-  return <button {...rest} className={combineClasses(classes.button, className)}>{children}</button>
+export function Button({className, children, color, ...rest}: ButtonProps) {
+  return <button {...rest}
+  className={combineClasses(classes.button, color && classes[color], className)}>
+    {children}
+  </button>
 }

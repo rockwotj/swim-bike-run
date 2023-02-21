@@ -1,0 +1,41 @@
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 64px 1fr 64px;
+  grid-template-rows: 64px auto 1fr auto 64px;
+  height: 100%;
+  grid-template-areas:
+    '. . settings'
+    '. heading .'
+    '. workout .'
+    '. button .'
+    '. . .';
+}
+
+.container > .settings-icon {
+  grid-area: settings;
+}
+
+.container > close-icon {
+  grid-area: close;
+}
+
+.heading {
+  grid-area: heading;
+  font-size: 2rem;
+}
+
+.workout {
+  grid-area: workout;
+  font-size: 1.25rem;
+  margin: 24px 0;
+  white-space: pre-wrap;
+}
+
+.button {
+  grid-area: button;
+  padding: 16px;
+  justify-self: stretch;
+  text-align: center;
+}

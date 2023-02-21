@@ -14,14 +14,17 @@ export function Home(): JSX.Element {
     navigate(`/sport/${rng.choice(ALL_SPORTS)}`);
   });
   return <div className={classes.container}>
-    <SettingsIcon/>
+    <SettingsIcon className={classes.settingsIcon}/>
     <div className={classes.content}>
-      <h1>Welcome home</h1>
+      <h1 className={classes.header}>Welcome home</h1>
       {ALL_SPORTS.map((sport) => (
-        <Button key={sport.type} onClick={() => navigate(`/sport/${sport.type}`)}>
+        <Button key={sport.type} className={classes.button} onClick={() => navigate(`/sport/${sport.type}`)}>
           {sport.asTitle()}
         </Button>
       ))}
+        <Button color="green" className={classes.button} onClick={() => navigate(`/completed`)}>
+          Completed Workouts
+        </Button>
     </div>
   </div>
 }

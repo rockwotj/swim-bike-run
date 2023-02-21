@@ -1,0 +1,37 @@
+.container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 64px minmax(0, 1fr) 64px;
+  grid-template-rows: 64px auto 1fr;
+  height: 100%;
+  width: 100%;
+  grid-template-areas: 
+  'close . .'
+  '. heading .'
+  '. content .';
+}
+
+.heading {
+  grid-area: heading;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.content {
+  grid-area: content;
+  align-self: stretch;
+  width: 100%;
+  gap: 16px;
+}
+
+.container > .close-icon {
+  grid-area: close;
+}
+
+.truncate {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

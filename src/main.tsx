@@ -4,9 +4,12 @@ import {PermissionGuard} from './PermissionGuard'
 import './reset.css'
 import './open-color.css'
 import './index.css'
+import {ErrorBoundary} from './components/screens/Error'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <PermissionGuard />
+    <ErrorBoundary>
+      <PermissionGuard />
+    </ErrorBoundary>
   </React.StrictMode>,
 )

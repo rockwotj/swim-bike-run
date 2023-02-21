@@ -5,3 +5,8 @@
   color: var(--oc-gray-0);
   cursor: pointer;
 }
+
+.green {
+  background: var(--oc-green-5);
+}
+
