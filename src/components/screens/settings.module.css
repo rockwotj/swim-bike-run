@@ -10,6 +10,22 @@
   justify-items: center;
 }
 
+.section {
+  align-items: center;
+  gap: 16px;
+}
+
+.section > h3 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.date-input {
+  border: 1px solid var(--oc-gray-5);
+  padding: 8px;
+  border-radius: 4px;
+}
+
 .container > * {
   grid-area: content
 }
