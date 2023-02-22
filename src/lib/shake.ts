@@ -13,7 +13,7 @@ export function useIsShakePermitted() {
   const [permission, setPermission] = useState(() => {
     if (typeof window.DeviceMotionEvent === "undefined") return ShakePermission.GRANTED;
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
-      return ShakePermission.UNKNOWN;
+      return ShakePermission.DENIED;
     } else {
       return ShakePermission.GRANTED;
     }
@@ -75,16 +75,17 @@ class ShakeListener {
     const {threshold = 5, timeout = 1000} = options;
     this.#threshold = threshold;
     this.#timeout = timeout;
-    this.#timeStamp = timeout * -1;
+    this.#timeStamp = Date.now() - timeout;
     this.#callback = cb;
   }
   
   #handleDeviceMotion = (event: DeviceMotionEvent): void => {
-    const diff = event.timeStamp - this.#timeStamp;
+    const now = Date.now();
+    const diff = now - this.#timeStamp;
     if (diff < this.#timeout) return;
     const accel = this.#getMaxAcceleration(event);
     if (accel < this.#threshold) return;
-    this.#timeStamp = event.timeStamp;
+    this.#timeStamp = now;
     this.#callback();
   };
 
@@ -103,6 +104,8 @@ class ShakeListener {
         const value = Math.abs(event.acceleration[key] ?? 0);
         if (value > max) max = value;
       }
+    } else {
+      console.log("Missing event.acceleration");
     }
     return max;
   }
