@@ -16,7 +16,7 @@ export function Home(): JSX.Element {
   return <div className={classes.container}>
     <SettingsIcon className={classes.settingsIcon}/>
     <div className={classes.content}>
-      <h1 className={classes.header}>Welcome home</h1>
+      <h1 className={classes.header}>Welcome</h1>
       {ALL_SPORTS.map((sport) => (
         <Button key={sport.type} className={classes.button} onClick={() => navigate(`/sport/${sport.type}`)}>
           {sport.asTitle()}

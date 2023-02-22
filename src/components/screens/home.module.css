@@ -1,14 +1,6 @@
 .container {
-  display: grid;
-  justify-items: center;
+  position: relative;
   align-items: center;
-  grid-template-columns: 64px 1fr 64px;
-  grid-template-rows: 64px 1fr 64px;
-  grid-auto-rows: auto;
-  grid-template-areas:
-    '. . settings'
-    '. content .'
-    '. . .';
 }
 
 .header {
@@ -17,17 +9,18 @@
 }
 
 .container > .settings-icon {
-  grid-area: settings;
+  position: absolute;
+  right: 8px;
+  top: 8px;
 }
 
 .content {
-  grid-area: content;
   gap: 16px;
-  align-self: stretch;
 }
 
 .button {
   text-align: center;
   font-size: 1.2rem;
   padding: 16px;
+  max-width: 75vw;
 }
