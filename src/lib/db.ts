@@ -1,12 +1,5 @@
 import Dexie, {Table} from 'dexie';
 
-interface ShakePermission {
-  readonly id: 'shake';
-  status: PermissionState;
-}
-
-export type Permission = ShakePermission;
-
 interface CompletedWorkout {
   readonly id?: number;
   readonly workout: string;
@@ -22,7 +15,6 @@ export type Setting = RaceDateSetting;
 
 
 export class AppDatabase extends Dexie {
-  permissions!: Table<Permission, Permission['id']>; 
   completedWorkouts!: Table<CompletedWorkout, CompletedWorkout['id']>; 
   settings!: Table<Setting, Setting['id']>; 
 
@@ -37,6 +29,11 @@ export class AppDatabase extends Dexie {
     });
     this.version(3).stores({
       permissions: 'id',
+      completedWorkouts: '++id',
+      settings: 'id',
+    });
+    this.version(4).stores({
+      permissions: null,
       completedWorkouts: '++id',
       settings: 'id',
     });

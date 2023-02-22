@@ -6,7 +6,7 @@ declare var DeviceMotionEvent: {
 }
 
 export enum ShakePermission {
-  GRANTED, DENIED, UNKNOWN, REQUESTING
+  GRANTED, DENIED, REQUESTING
 }
 
 export function useIsShakePermitted() {
@@ -18,14 +18,8 @@ export function useIsShakePermitted() {
       return ShakePermission.GRANTED;
     }
   });
-  useEffect(() => {
-    if (permission !== ShakePermission.UNKNOWN) return;
-    db.permissions.get('shake').then((stored) => {
-      setPermission(stored?.status === "granted" ? ShakePermission.GRANTED : ShakePermission.DENIED);
-    });
-  }, [permission]);
   const requestPermission = useCallback(async () => {
-    if (permission === ShakePermission.GRANTED) return;
+    if (permission !== ShakePermission.DENIED) return;
     setPermission(ShakePermission.REQUESTING);
     const status = await DeviceMotionEvent.requestPermission();
     await db.permissions.put({id: 'shake', status});
