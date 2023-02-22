@@ -72,7 +72,7 @@ class ShakeListener {
   #callback: ShakeCallback;
 
   constructor(cb: ShakeCallback, options: Partial<ShakeOptions> = {}) {
-    const {threshold = 15, timeout = 1000} = options;
+    const {threshold = 5, timeout = 1000} = options;
     this.#threshold = threshold;
     this.#timeout = timeout;
     this.#timeStamp = timeout * -1;
