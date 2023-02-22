@@ -1,5 +1,4 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {db} from './db';
 
 declare var DeviceMotionEvent: {
   requestPermission(): Promise<PermissionState>;
@@ -22,7 +21,6 @@ export function useIsShakePermitted() {
     if (permission !== ShakePermission.DENIED) return;
     setPermission(ShakePermission.REQUESTING);
     const status = await DeviceMotionEvent.requestPermission();
-    await db.permissions.put({id: 'shake', status});
     setPermission(status === 'granted' ? ShakePermission.GRANTED : ShakePermission.DENIED);
   }, [permission]);
   return {

@@ -8,7 +8,6 @@ export function PermissionGuard() {
   const {permission, requestPermission} = useIsShakePermitted();
   switch (permission) {
     case ShakePermission.GRANTED:
-    case ShakePermission.UNKNOWN:
       return <App />
     case ShakePermission.REQUESTING:
       return <Loading />
